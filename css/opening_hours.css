@@ -1,0 +1,62 @@
+.openinghourstable table {
+  border-collapse: separate;
+  padding:0;
+  margin-top:10px;
+  }
+.openinghourstable tr.today td.day { 
+	border:1px solid #bbb;
+	border-radius:3px;
+	}
+.openinghourstable td { 
+	padding: 0px 10px;
+	font-size: 11px;
+	white-space:nowrap;
+	}
+.openinghourstable td.day { text-align: center }
+.openinghourstable td.workday {  }
+.openinghourstable td.weekend { 
+	font-weight:600;
+	}
+.openinghourstable td.times { 
+	width: 250px; 
+	padding: 0px 1px;
+	position:relative;
+	}
+
+.openinghourstable p { display:none }
+.openinghourstable div.timebar { height: 15px; display: inline-block }
+.openinghourstable div.open { background: #FFFFFF; margin: 0px -1px; border: 1px solid #AAAAAA; border-radius: 5px }
+.openinghourstable div.unknown { background: #94d7b3; margin: 0px -1px; border: 1px solid #AAAAAA; border-radius: 5px }
+.openinghourstable div.closed {}
+
+.openinghourstable div.morning {
+	width:25%;
+	position:absolute;
+	top:0;
+	left: 0;
+	background:#ccc;
+	height:100%;
+	}
+.openinghourstable div.day {
+	width:58.33%;
+	position:absolute;
+	top:0;
+	left:25%;
+	background:#e0e0e0;
+	height:100%;
+	}
+.openinghourstable div.night {
+	width:16.67%;
+	position:absolute;
+	top:0;
+	right: 0;
+	background:#ccc;
+	height:100%;
+	}
+.openinghourstable div.times {
+	position: absolute; 
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	}
