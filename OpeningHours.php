@@ -19,7 +19,14 @@ $wgExtensionMessagesFiles['ExampleExtension'] = __DIR__ . '/OpeningHours.i18n.ph
 $wgHooks['ParserFirstCallInit'][] = 'efOpeningHoursInit';
  
 $wgResourceModules['ext.openinghours'] = array(
-	'scripts' => array( 'js/opening_hours.js', 'js/opening_hours_table.js', 'js/i18next.min.js', 'js/moment-with-locales.min.js', 'js/i18n-resources.js' ),
+	'scripts' => array( 
+		'js/opening_hours.js', 
+		'js/opening_hours_table.js', 
+		'js/i18next.min.js', 
+		'js/moment-with-locales.min.js', 
+		'js/i18n-resources.js',
+		'js/ext.openinghours.js'
+		),
 	'styles' => 'css/opening_hours.css',
 	'localBasePath' => __DIR__,
 	'remoteExtPath' => 'OpeningHours',
