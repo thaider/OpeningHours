@@ -11,17 +11,17 @@ class OpeningHours {
 	 * @return string
 	 */
 	public static function ParserHook( $text, $args, $parser, $frame ) {
-		return OpeningHours::PrintOpeningHours( $text );
+		return OpeningHours::PrintOpeningHours( $text, $parser );
 	}
 	
 	public static function ParserFunction( $parser, $text = '' ) {
-		return array( OpeningHours::PrintOpeningHours( $text ), 'noparse' => true, 'isHTML' => true );
+		return array( OpeningHours::PrintOpeningHours( $text, $parser ), 'noparse' => true, 'isHTML' => true );
 	}
 	
-	public static function PrintOpeningHours( $text ) {
+	public static function PrintOpeningHours( $text, $parser ) {
 		global $wgOut;
 		wfProfileIn( __METHOD__ );
-		$wgOut->addModules( 'ext.openinghours' );
+		$parser->getOutput()->addModules( 'ext.openinghours' );
 
 		$out = '<div class="openinghourstable" data-openinghours="' . $text . '">
 			</div>';
