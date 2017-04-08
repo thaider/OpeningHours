@@ -79,11 +79,13 @@ pad: function (n) { return n < 10 ? '0'+n : n; },
 	 },
 
 printDate: function (date) {
-			   return moment(date).format('MMM D, dd');
+			   //return moment(date).format('MMM D, dd');
+			   return moment(date).format('dd, D. MMM'); //thai: use Austrian formatting
 		   },
 
 printTime: function (date) {
-			   return moment(date).format('HH:mm');
+			   //return moment(date).format('HH:mm');
+			   return moment(date).format('H:mm'); //thai: shorten it a bit
 		   },
 
 drawTable: function (it, date_today, has_next_change) {
@@ -92,7 +94,8 @@ drawTable: function (it, date_today, has_next_change) {
 
 			   var date = new Date(date_today);
 			   // date.setDate(date.getDate() - date.getDay() + 7);
-			   date.setDate(date.getDate() - date.getDay() - 1); // start at begin of the week
+			   //date.setDate(date.getDate() - date.getDay() - 1); // start at begin of the week
+			   date.setDate(date.getDate() - date.getDay()); // thai: start with Monday
 
 			   var table = [];
 
@@ -131,8 +134,10 @@ date: new Date(date),
 					   table[row].times += '<div class="timebar ' + (is_open ? 'open' : (unknown ? 'unknown' : 'closed'))
 						   + '" style="width:' + (to-fr) + '%"></div>';
 					   if (is_open || unknown) {
-						   var text = i18n.t('words.' + state_string) + ' ' + this.printTime(prevdate)
-							   + ' ' + i18n.t('words.to') + ' ';
+						   //var text = i18n.t('words.' + state_string) + ' ' + this.printTime(prevdate)
+							//   + ' ' + i18n.t('words.to') + ' ';
+						   var text = this.printTime(prevdate)
+						   	  + '-'; // thai: shorten it a bit
 						   if (prevdate.getDay() !== curdate.getDay())
 							   text += '24:00';
 						   else
@@ -156,7 +161,8 @@ date: new Date(date),
 			   }
 
 			   var output = '';
-			   output += '<table>';
+			   //output += '<table>';
+			   output += '<table class="well">'; //thai:add well
 			   for (var row in table) {
 				   var today = table[row].date.getDay() === date_today.getDay();
 				   var endweek = ((table[row].date.getDay() + 1) % 7) === date_today.getDay();
@@ -167,7 +173,9 @@ date: new Date(date),
 				   output += '<tr' + cl + '><td class="day ' + (table[row].date.getDay() % 6 === 0 ? 'weekend' : 'workday') + '">';
 				   output += this.printDate(table[row].date);
 				   output += '</td><td class="times">';
+				   output += '<div class="morning"></div><div class="day"></div><div class="night"></div><div class="times">'; //thai: show nightly hours
 				   output += table[row].times;
+				   output += '</div>'; //thai: closing encapsulation
 				   output += '</td><td>';
 				   output += table[row].text.join(', ') || '&nbsp;';
 				   output += '</td></tr>';
