@@ -156,7 +156,8 @@ date: new Date(date),
 					   table[row].times += '<div class="timebar ' + (is_open ? 'open' : (unknown ? 'unknown' : 'closed'))
 						   + '" style="width:100%"></div>';
 					   if (is_open)
-						   table[row].text.push(i18n.t('words.open') + ' 00:00 ' + i18n.t('words.to') + ' 24:00');
+						   //table[row].text.push(i18n.t('words.open') + ' 00:00 ' + i18n.t('words.to') + ' 24:00');
+						   table[row].text.push('0:00-24:00'); // thai: shorten it
 				   }
 			   }
 
