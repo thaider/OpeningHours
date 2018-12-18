@@ -20,12 +20,10 @@ class OpeningHours {
 	
 	public static function PrintOpeningHours( $text, $parser ) {
 		global $wgOut;
-		wfProfileIn( __METHOD__ );
 		$parser->getOutput()->addModules( 'ext.openinghours' );
 
 		$out = '<div class="openinghourstable" data-openinghours="' . $text . '">
 			</div>';
-		wfProfileOut( __METHOD__ );
 		return $out;
 		}
 }
